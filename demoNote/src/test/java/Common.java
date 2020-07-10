@@ -21,6 +21,15 @@ import java.util.*;
  */
 public class Common {
 
+
+    @org.junit.Test
+    public void test7(){
+        Optional lockNameOptional = Optional.ofNullable(" ");
+        System.out.println(lockNameOptional.equals(Optional.ofNullable(null)));
+    }
+
+
+
     @org.junit.Test
     public void test6(){
         ArrayList<Integer> integers = new ArrayList<>();

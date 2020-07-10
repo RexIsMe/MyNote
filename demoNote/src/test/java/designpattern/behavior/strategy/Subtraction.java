@@ -1,4 +1,4 @@
-package designpattern.strategy;
+package designpattern.behavior.strategy;
 
 /**
  * 减法运算

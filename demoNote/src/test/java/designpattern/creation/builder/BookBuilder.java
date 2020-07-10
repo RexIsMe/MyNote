@@ -1,4 +1,4 @@
-package designpattern.builder;
+package designpattern.creation.builder;
 
 /**
  * <p>Title: BookBuilder</p>

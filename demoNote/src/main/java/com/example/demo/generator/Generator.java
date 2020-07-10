@@ -19,6 +19,7 @@ import java.util.*;
 
 /**
  * @author zhangcan
+ * 根据数据库表结构自动生成mapper、service、controller等
  */
 public class Generator {
 	/** 模块名称 */

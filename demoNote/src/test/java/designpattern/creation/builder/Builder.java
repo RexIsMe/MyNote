@@ -1,6 +1,9 @@
-package designpattern.builder;
+package designpattern.creation.builder;
 
 /**
+ * 【建造者模式】
+ *
+ *
  * <p>Title: Builder</p>
  * <p>Description: 对象的构建逻辑描述
  *  * 影视，书籍等作品创建步骤</p>
