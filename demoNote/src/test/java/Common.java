@@ -2,6 +2,7 @@ import ch.ethz.ssh2.Connection;
 import ch.ethz.ssh2.SCPClient;
 import ch.ethz.ssh2.Session;
 import ch.ethz.ssh2.StreamGobbler;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.utils.file.FileUtil;
 import org.junit.Test;
@@ -20,6 +21,22 @@ import java.util.*;
  * @date 2020/4/1213:50
  */
 public class Common {
+
+
+
+
+
+    @org.junit.Test
+    public void test8(){
+
+        get(1,2,3).forEach(e -> System.out.println(e));
+
+    }
+
+    public <T> List get(T... ts){
+        List<T> ts1 = Arrays.asList(ts);
+        return ts1;
+    }
 
 
     @org.junit.Test
