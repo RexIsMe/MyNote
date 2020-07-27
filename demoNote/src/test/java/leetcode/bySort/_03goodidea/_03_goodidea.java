@@ -1,4 +1,4 @@
-package leetcode._03goodidea;
+package leetcode.bySort._03goodidea;
 
 /**
  * @author Rex

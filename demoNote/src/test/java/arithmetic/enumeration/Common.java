@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Cytang
+ * @author lizhiqiang
  * @title: Common
  * @projectName demoNote
  * @description: 枚举算法实践

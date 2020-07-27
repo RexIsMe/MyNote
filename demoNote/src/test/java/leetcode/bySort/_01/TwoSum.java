@@ -1,6 +1,4 @@
-package leetcode._01;
-
-import org.junit.Test;
+package leetcode.bySort._01;
 
 /**
  * @author Rex

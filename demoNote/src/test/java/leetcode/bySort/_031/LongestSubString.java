@@ -1,4 +1,4 @@
-package leetcode._031;
+package leetcode.bySort._031;
 
 import org.junit.Test;
 

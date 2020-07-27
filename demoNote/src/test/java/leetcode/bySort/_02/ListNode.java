@@ -1,4 +1,4 @@
-package leetcode._02;
+package leetcode.bySort._02;
 
 /**
  * @author Rex

@@ -1,4 +1,4 @@
-package leetcode._03;
+package leetcode.bySort._03;
 
 
 import java.util.*;

@@ -1,4 +1,4 @@
-package leetcode._02;
+package leetcode.bySort._02;
 
 import java.util.ArrayList;
 import java.util.List;
