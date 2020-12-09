@@ -1,6 +1,11 @@
 package designpattern.behavior.dutychain;
 
 /**
+ * 责任链模式
+ * 目的是拆分不同的handler处理,使代码不至于过于耦合；同时相较于策略模式，责任链模式中的各个handler可以进行部分处理
+ *
+ * 关键实现：每个handler有下一个handler的对象
+ *
  * @author Cytang
  * @title: ChainPatternDemo
  * @projectName demoNote

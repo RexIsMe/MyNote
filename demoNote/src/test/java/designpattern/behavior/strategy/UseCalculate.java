@@ -2,6 +2,8 @@ package designpattern.behavior.strategy;
 
 /**
  * 计算的使用类
+ * 策略模式的目的：对同类型的多种不同处理方式提供一种扩展性高的编码模板
+ *
  * @author Rex
  */
 public class UseCalculate {
