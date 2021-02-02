@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContextAware;
 
 /**
  * @author Cytang
- * @title: Person
+ * @title: IPerson
  * @projectName demoNote
  * @description: TODO
  * @date 2020/6/1617:05

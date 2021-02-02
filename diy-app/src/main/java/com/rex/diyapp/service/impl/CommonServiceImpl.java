@@ -19,7 +19,7 @@ public class CommonServiceImpl implements CommonService {
     @Override
     public JSONObject formatAlertMsg(String alertMsg) {
 
-        dingTalkRobotClient.sendTextMessage(alertMsg);
+        dingTalkRobotClient.sendTextMessage(alertMsg, new String[]{"18272163813"});
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("msg", "成功");
