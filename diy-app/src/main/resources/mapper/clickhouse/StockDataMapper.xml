@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rex.diyapp.mapper.StockDataMapper">
+    <resultMap id="BaseResultMap" type="com.rex.diyapp.entity.ExtendStockData">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="ip" jdbcType="VARCHAR" property="ip" />
+        <result column="time_stamp" jdbcType="VARCHAR" property="timeStamp" />
+        <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+        <result column="business_name" jdbcType="VARCHAR" property="businessName" />
+        <result column="inventory_number" jdbcType="VARCHAR" property="inventoryNumber" />
+        <result column="warehouse_name" jdbcType="VARCHAR" property="warehouseName" />
+        <result column="warehouse_id" jdbcType="VARCHAR" property="warehouseId" />
+        <result column="warehouse_code" jdbcType="VARCHAR" property="warehouseCode" />
+        <result column="warehouse_category_name" jdbcType="VARCHAR" property="warehouseCategoryName" />
+        <result column="warehouse_category_id" jdbcType="VARCHAR" property="warehouseCategoryId" />
+        <result column="warehouse_category_code" jdbcType="VARCHAR" property="warehouseCategoryCode" />
+        <result column="warehouse_area_id" jdbcType="VARCHAR" property="warehouseAreaId" />
+        <result column="warehouse_area_desc" jdbcType="VARCHAR" property="warehouseAreaDesc" />
+        <result column="warehouse_area_code" jdbcType="VARCHAR" property="warehouseAreaCode" />
+        <result column="supplier_name" jdbcType="VARCHAR" property="supplierName" />
+        <result column="supplier_id" jdbcType="VARCHAR" property="supplierId" />
+        <result column="supplier_enable_code" jdbcType="VARCHAR" property="supplierEnableCode" />
+        <result column="supplier_code" jdbcType="VARCHAR" property="supplierCode" />
+        <result column="storage_condition" jdbcType="VARCHAR" property="storageCondition" />
+        <result column="sterilization_batch_no" jdbcType="VARCHAR" property="sterilizationBatchNo" />
+        <result column="register_number" jdbcType="VARCHAR" property="registerNumber" />
+        <result column="register_name" jdbcType="VARCHAR" property="registerName" />
+        <result column="quotiety" jdbcType="VARCHAR" property="quotiety" />
+        <result column="quantity" jdbcType="VARCHAR" property="quantity" />
+        <result column="professional_group" jdbcType="VARCHAR" property="professionalGroup" />
+        <result column="production_place" jdbcType="VARCHAR" property="productionPlace" />
+        <result column="production_license" jdbcType="VARCHAR" property="productionLicense" />
+        <result column="produced_date" jdbcType="VARCHAR" property="producedDate" />
+        <result column="package_unit_name" jdbcType="VARCHAR" property="packageUnitName" />
+        <result column="accounting_ml" jdbcType="VARCHAR" property="accountingMl" />
+        <result column="accounting_name" jdbcType="VARCHAR" property="accountingName" />
+        <result column="accounting_one" jdbcType="VARCHAR" property="accountingOne" />
+        <result column="allocated_quantity" jdbcType="VARCHAR" property="allocatedQuantity" />
+        <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
+        <result column="classify_id_level1" jdbcType="VARCHAR" property="classifyIdLevel1" />
+        <result column="classify_id_level2" jdbcType="VARCHAR" property="classifyIdLevel2" />
+        <result column="cold_chain_mark" jdbcType="VARCHAR" property="coldChainMark" />
+        <result column="commodity_code" jdbcType="VARCHAR" property="commodityCode" />
+        <result column="commodity_id" jdbcType="VARCHAR" property="commodityId" />
+        <result column="commodity_name" jdbcType="VARCHAR" property="commodityName" />
+        <result column="commodity_number" jdbcType="VARCHAR" property="commodityNumber" />
+        <result column="commodity_remark" jdbcType="VARCHAR" property="commodityRemark" />
+        <result column="commodity_spec" jdbcType="VARCHAR" property="commoditySpec" />
+        <result column="commodity_type" jdbcType="VARCHAR" property="commodityType" />
+        <result column="customer_code" jdbcType="VARCHAR" property="customerCode" />
+        <result column="customer_enable_code" jdbcType="VARCHAR" property="customerEnableCode" />
+        <result column="customer_id" jdbcType="VARCHAR" property="customerId" />
+        <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+        <result column="device_classify" jdbcType="VARCHAR" property="deviceClassify" />
+        <result column="device_classify_type" jdbcType="VARCHAR" property="deviceClassifyType" />
+        <result column="effective_date" jdbcType="VARCHAR" property="effectiveDate" />
+        <result column="effective_days" jdbcType="VARCHAR" property="effectiveDays" />
+        <result column="goods_location" jdbcType="VARCHAR" property="goodsLocation" />
+        <result column="goods_location_id" jdbcType="VARCHAR" property="goodsLocationId" />
+        <result column="inventory_organization_code" jdbcType="VARCHAR" property="inventoryOrganizationCode" />
+        <result column="inventory_organization_id" jdbcType="VARCHAR" property="inventoryOrganizationId" />
+        <result column="inventory_organization_name" jdbcType="VARCHAR" property="inventoryOrganizationName" />
+        <result column="is_simplelevy" jdbcType="VARCHAR" property="isSimplelevy" />
+        <result column="logic_area_code" jdbcType="VARCHAR" property="logicAreaCode" />
+        <result column="logic_area_id" jdbcType="VARCHAR" property="logicAreaId" />
+        <result column="logic_area_name" jdbcType="VARCHAR" property="logicAreaName" />
+        <result column="manufacturer_name" jdbcType="VARCHAR" property="manufacturerName" />
+        <result column="organization_id" jdbcType="VARCHAR" property="organizationId" />
+        <result column="organization_name" jdbcType="VARCHAR" property="organizationName" />
+        <result column="owner_code" jdbcType="VARCHAR" property="ownerCode" />
+        <result column="owner_id" jdbcType="VARCHAR" property="ownerId" />
+        <result column="owner_name" jdbcType="VARCHAR" property="ownerName" />
+        <result column="package_unitId" jdbcType="VARCHAR" property="packageUnitId" />
+    </resultMap>
+    <sql id="from">
+        from stock_data
+        <where>
+            <if test="id!=null">
+                and id = #{id}
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(ip)">
+                and ip like concat('%',#{ip},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(timeStamp)">
+                and time_stamp like concat('%',#{timeStamp},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(businessName)">
+                and business_name like concat('%',#{businessName},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(companyName)">
+                and company_name like concat('%',#{companyName},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(batchNo)">
+                and batch_no like concat('%',#{batchNo},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(inventoryNumber)">
+                and inventory_number like concat('%',#{inventoryNumber},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(warehouseName)">
+                and warehouse_name like concat('%',#{warehouseName},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(warehouseId)">
+                and warehouse_id like concat('%',#{warehouseId},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(warehouseCode)">
+                and warehouse_code like concat('%',#{warehouseCode},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(warehouseCategoryName)">
+                and warehouse_category_name like concat('%',#{warehouseCategoryName},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(warehouseCategoryId)">
+                and warehouse_category_id like concat('%',#{warehouseCategoryId},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(warehouseCategoryCode)">
+                and warehouse_category_code like concat('%',#{warehouseCategoryCode},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(warehouseAreaId)">
+                and warehouse_area_id like concat('%',#{warehouseAreaId},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(warehouseAreaDesc)">
+                and warehouse_area_desc like concat('%',#{warehouseAreaDesc},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(warehouseAreaCode)">
+                and warehouse_area_code like concat('%',#{warehouseAreaCode},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(supplierName)">
+                and supplier_name like concat('%',#{supplierName},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(supplierId)">
+                and supplier_id like concat('%',#{supplierId},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(supplierEnableCode)">
+                and supplier_enable_code like concat('%',#{supplierEnableCode},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(supplierCode)">
+                and supplier_code like concat('%',#{supplierCode},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(storageCondition)">
+                and storage_condition like concat('%',#{storageCondition},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(sterilizationBatchNo)">
+                and sterilization_batch_no like concat('%',#{sterilizationBatchNo},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(registerNumber)">
+                and register_number like concat('%',#{registerNumber},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(registerName)">
+                and register_name like concat('%',#{registerName},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(quotiety)">
+                and quotiety like concat('%',#{quotiety},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(quantity)">
+                and quantity like concat('%',#{quantity},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(professionalGroup)">
+                and professional_group like concat('%',#{professionalGroup},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(productionPlace)">
+                and production_place like concat('%',#{productionPlace},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(productionLicense)">
+                and production_license like concat('%',#{productionLicense},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(producedDate)">
+                and produced_date like concat('%',#{producedDate},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(packageUnitName)">
+                and package_unit_name like concat('%',#{packageUnitName},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(accountingMl)">
+                and accounting_ml like concat('%',#{accountingMl},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(accountingName)">
+                and accounting_name like concat('%',#{accountingName},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(accountingOne)">
+                and accounting_one like concat('%',#{accountingOne},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(allocatedQuantity)">
+                and allocated_quantity like concat('%',#{allocatedQuantity},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(brandName)">
+                and brand_name like concat('%',#{brandName},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(classifyIdLevel1)">
+                and classify_id_level1 like concat('%',#{classifyIdLevel1},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(classifyIdLevel2)">
+                and classify_id_level2 like concat('%',#{classifyIdLevel2},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(coldChainMark)">
+                and cold_chain_mark like concat('%',#{coldChainMark},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(commodityCode)">
+                and commodity_code like concat('%',#{commodityCode},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(commodityId)">
+                and commodity_id like concat('%',#{commodityId},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(commodityName)">
+                and commodity_name like concat('%',#{commodityName},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(commodityNumber)">
+                and commodity_number like concat('%',#{commodityNumber},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(commodityRemark)">
+                and commodity_remark like concat('%',#{commodityRemark},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(commoditySpec)">
+                and commodity_spec like concat('%',#{commoditySpec},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(commodityType)">
+                and commodity_type like concat('%',#{commodityType},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(customerCode)">
+                and customer_code like concat('%',#{customerCode},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(customerEnableCode)">
+                and customer_enable_code like concat('%',#{customerEnableCode},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(customerId)">
+                and customer_id like concat('%',#{customerId},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(customerName)">
+                and customer_name like concat('%',#{customerName},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(deviceClassify)">
+                and device_classify like concat('%',#{deviceClassify},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(deviceClassifyType)">
+                and device_classify_type like concat('%',#{deviceClassifyType},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(effectiveDate)">
+                and effective_date like concat('%',#{effectiveDate},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(effectiveDays)">
+                and effective_days like concat('%',#{effectiveDays},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(goodsLocation)">
+                and goods_location like concat('%',#{goodsLocation},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(goodsLocationId)">
+                and goods_location_id like concat('%',#{goodsLocationId},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(inventoryOrganizationCode)">
+                and inventory_organization_code like concat('%',#{inventoryOrganizationCode},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(inventoryOrganizationId)">
+                and inventory_organization_id like concat('%',#{inventoryOrganizationId},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(inventoryOrganizationName)">
+                and inventory_organization_name like concat('%',#{inventoryOrganizationName},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(isSimplelevy)">
+                and is_simplelevy like concat('%',#{isSimplelevy},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(logicAreaCode)">
+                and logic_area_code like concat('%',#{logicAreaCode},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(logicAreaId)">
+                and logic_area_id like concat('%',#{logicAreaId},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(logicAreaName)">
+                and logic_area_name like concat('%',#{logicAreaName},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(manufacturerName)">
+                and manufacturer_name like concat('%',#{manufacturerName},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(organizationId)">
+                and organization_id like concat('%',#{organizationId},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(organizationName)">
+                and organization_name like concat('%',#{organizationName},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(ownerCode)">
+                and owner_code like concat('%',#{ownerCode},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(ownerId)">
+                and owner_id like concat('%',#{ownerId},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(ownerName)">
+                and owner_name like concat('%',#{ownerName},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(packageUnitId)">
+                and package_unitId like concat('%',#{packageUnitId},'%')
+            </if>
+
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        id, ip, time_stamp, business_name, company_name, batch_no, inventory_number, warehouse_name, warehouse_id, warehouse_code, warehouse_category_name, warehouse_category_id, warehouse_category_code, warehouse_area_id, warehouse_area_desc, warehouse_area_code, supplier_name, supplier_id, supplier_enable_code, supplier_code, storage_condition, sterilization_batch_no, register_number, register_name, quotiety, quantity, professional_group, production_place, production_license, produced_date, package_unit_name, accounting_ml, accounting_name, accounting_one, allocated_quantity, brand_name, classify_id_level1, classify_id_level2, cold_chain_mark, commodity_code, commodity_id, commodity_name, commodity_number, commodity_remark, commodity_spec, commodity_type, customer_code, customer_enable_code, customer_id, customer_name, device_classify, device_classify_type, effective_date, effective_days, goods_location, goods_location_id, inventory_organization_code, inventory_organization_id, inventory_organization_name, is_simplelevy, logic_area_code, logic_area_id, logic_area_name, manufacturer_name, organization_id, organization_name, owner_code, owner_id, owner_name, package_unitId
+    </sql>
+    <select id="selectById" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from stock_data
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <select id="selectList" parameterType="com.rex.diyapp.entity.ExtendStockData" resultMap="BaseResultMap" >
+        select
+        <include refid="Base_Column_List" />
+        <include refid="from"/>
+        <if test="pageNo!=null and pageSize !=null">
+            limit ${(pageNo-1)*pageSize},#{pageSize}
+        </if>
+    </select>
+    <select id="selectCount" parameterType="com.rex.diyapp.entity.ExtendStockData" resultType="java.lang.Integer" >
+        select
+        count(1)
+        <include refid="from"/>
+    </select>
+
+
+
+</mapper>
