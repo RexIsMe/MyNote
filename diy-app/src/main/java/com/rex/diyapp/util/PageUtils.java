@@ -36,4 +36,14 @@ public class PageUtils {
         return list.toArray();
     }
 
+    /**
+     * 根据总记录数和页间距得到总页数
+     * @param totalNum 总记录数
+     * @param pageSize 页间距
+     * @return
+     */
+    public static Integer getTotalPageNo(Integer totalNum, Integer pageSize){
+        return (totalNum % pageSize != 0) ? totalNum / pageSize + 1 : totalNum / pageSize;
+    }
+
 }

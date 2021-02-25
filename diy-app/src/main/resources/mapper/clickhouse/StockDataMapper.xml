@@ -313,6 +313,118 @@
         <include refid="from"/>
     </select>
 
-
+    <!-- 批号货位库存 sql -->
+    <select id="getBatchNo" parameterType="com.rex.diyapp.entity.ExtendStockData" resultType="com.rex.diyapp.entity.vo.excel.ExpBatchNoVO" >
+        select
+            owner_name ownerName,
+            goods_location goodsLocation,
+            inventory_organization_id inventoryOrganizationId,
+            register_number registerNumber,
+            batch_no batchNo,
+            sterilization_batch_no sterilizationBatchNo,
+            effective_date effectiveDate,
+            produced_date producedDate,
+            warehouse_name warehouseName,
+            supplier_name supplierName,
+            manufacturer_name manufacturerName,
+            commodity_name commodityName,
+            commodity_spec commoditySpec,
+            classify_id_level1 classifyIdLevel1,
+            classify_id_level2 classifyIdLevel2,
+            brand_name brandName,
+            register_name registerName,
+            logic_area_name logicAreaName,
+            package_unit_name packageUnitName,
+            commodity_code commodityCode,
+            register_name registerName,
+            customer_name customerName,
+            commodity_number commodityNumber,
+            sum(toInt32OrZero(inventory_number)) inventoryNumber
+        <include refid="from"/>
+        group by
+            owner_name,
+            goods_location,
+            inventory_organization_id,
+            register_number,
+            batch_no,
+            sterilization_batch_no,
+            effective_date,
+            produced_date,
+            warehouse_name,
+            supplier_name,
+            manufacturer_name,
+            commodity_name,
+            commodity_spec,
+            classify_id_level1,
+            classify_id_level2,
+            brand_name,
+            register_name,
+            logic_area_name,
+            package_unit_name,
+            commodity_code,
+            register_name,
+            customer_name,
+            commodity_number
+          order by goods_location asc
+        <if test="pageNo!=null and pageSize !=null">
+            limit ${(pageNo-1)*pageSize},#{pageSize}
+        </if>
+    </select>
+    <select id="getBatchNoCount" parameterType="com.rex.diyapp.entity.ExtendStockData" resultType="java.lang.Integer" >
+        select
+          count(1)
+        from
+        (
+            select
+                owner_name,
+                goods_location,
+                inventory_organization_id,
+                register_number,
+                batch_no,
+                sterilization_batch_no,
+                effective_date,
+                produced_date,
+                warehouse_name,
+                supplier_name,
+                manufacturer_name,
+                commodity_name,
+                commodity_spec,
+                classify_id_level1,
+                classify_id_level2,
+                brand_name,
+                register_name,
+                logic_area_name,
+                package_unit_name,
+                commodity_code,
+                register_name,
+                customer_name,
+                commodity_number
+            <include refid="from"/>
+            group by
+                owner_name,
+                goods_location,
+                inventory_organization_id,
+                register_number,
+                batch_no,
+                sterilization_batch_no,
+                effective_date,
+                produced_date,
+                warehouse_name,
+                supplier_name,
+                manufacturer_name,
+                commodity_name,
+                commodity_spec,
+                classify_id_level1,
+                classify_id_level2,
+                brand_name,
+                register_name,
+                logic_area_name,
+                package_unit_name,
+                commodity_code,
+                register_name,
+                customer_name,
+                commodity_number
+        )
+    </select>
 
 </mapper>

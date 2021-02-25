@@ -1,7 +1,7 @@
 package com.rex.diyapp.mapper;
 
 import com.rex.diyapp.entity.ExtendStockData;
-import com.rex.diyapp.entity.UserInfo;
+import com.rex.diyapp.entity.vo.excel.ExpBatchNoVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.data.repository.query.Param;
 
@@ -29,4 +29,9 @@ public interface StockDataMapper {
      * @return
      */
     Integer selectCount(ExtendStockData extendStockDataParam) ;
+
+    List<ExpBatchNoVO> getBatchNo(ExtendStockData extendStockDataParam) ;
+
+    Integer getBatchNoCount(ExtendStockData extendStockDataParam) ;
+
 }
