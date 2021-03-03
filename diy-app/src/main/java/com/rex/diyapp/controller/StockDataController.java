@@ -43,9 +43,6 @@ public class StockDataController {
     @GetMapping("/getBatchNoCsv")
     public Serializable getBatchNoCsv(ExtendStockData extendStockDataParam) {
         try {
-//            //清除分页参数
-//            extendStockDataParam.setPageNo(null);
-//            extendStockDataParam.setPageSize(null);
             ExpResultCommonVO expResultCommonVO = ExpUtils.initExpResult(ExportConstants.REDIS_KEY_PREFIX_OF_BATCH_NO_LIST);
             CompletableFuture.supplyAsync(() -> extendStockDataParam).thenAccept(s -> stockDataService.getBatchNoCsv(expResultCommonVO, extendStockDataParam));
             return OsResult.buildSuccessResult(expResultCommonVO);

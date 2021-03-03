@@ -5,10 +5,10 @@ import lombok.Data;
 
 /**
  * @Author li zhiqang
- * @create 2021/2/23
+ * @create 2021/2/25
  */
 @Data
-public class ExtendStockData extends StockData {
+public class ExtendOutputStockData extends OutPutStock {
 
     @Comment("数据发送服务器ip")
     private String ip;
