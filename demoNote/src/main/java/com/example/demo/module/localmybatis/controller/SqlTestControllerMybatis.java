@@ -48,6 +48,12 @@ public class SqlTestControllerMybatis {
         return sqlTestService.findAll(sqlTestBean);
     }
 
+
+    /**
+     * 与countWithIf比较，验证sql优化的效果
+     * @param param
+     * @return
+     */
     @GetMapping("count")
     public Integer count(ErpSalePricePageParam param) {
         return erpSalePriceService.count(param);
