@@ -1,8 +1,8 @@
-package com.tyche.icms.entity;
+package com.example.demo.entity;
 
 import javax.persistence.Table;
-import com.tyche.icms.common.BaseEntity;
-import com.tyche.icms.annotation.Comment;
+import com.example.demo.common.BaseEntity;
+import com.example.demo.annotation.Comment;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 ${imports}

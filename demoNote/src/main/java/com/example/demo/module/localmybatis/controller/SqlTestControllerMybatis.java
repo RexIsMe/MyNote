@@ -1,6 +1,8 @@
 package com.example.demo.module.localmybatis.controller;
 
 import com.example.demo.module.localmybatis.entity.SqlTestBean;
+import com.example.demo.module.localmybatis.param.ErpSalePricePageParam;
+import com.example.demo.module.localmybatis.service.ErpSalePriceService;
 import com.example.demo.module.localmybatis.service.SqlTestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,8 @@ public class SqlTestControllerMybatis {
     @Autowired
     private SqlTestService sqlTestService;
 
+    @Autowired
+    private ErpSalePriceService erpSalePriceService;
 
     @GetMapping(value = "/getById")
     @ResponseBody
@@ -43,5 +47,16 @@ public class SqlTestControllerMybatis {
     public List<SqlTestBean> findAll(@RequestBody SqlTestBean sqlTestBean){
         return sqlTestService.findAll(sqlTestBean);
     }
+
+    @GetMapping("count")
+    public Integer count(ErpSalePricePageParam param) {
+        return erpSalePriceService.count(param);
+    }
+
+    @GetMapping("countWithIf")
+    public Integer countWithIf(ErpSalePricePageParam param) {
+        return erpSalePriceService.countWithIf(param);
+    }
+
 
 }

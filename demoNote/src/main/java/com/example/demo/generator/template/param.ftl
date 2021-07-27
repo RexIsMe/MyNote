@@ -1,8 +1,8 @@
-package com.tyche.icms.module.${moduleName}.param;
+package com.example.demo.module.${moduleName}.param;
 
-import com.tyche.icms.entity.${entityName};
-import com.tyche.framework.common.BaseParam;
-import com.tyche.icms.annotation.Comment;
+import com.example.demo.entity.${entityName};
+import com.example.demo.common.BaseParam;
+import com.example.demo.annotation.Comment;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

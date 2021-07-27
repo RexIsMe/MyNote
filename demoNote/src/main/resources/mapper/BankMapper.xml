@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.module.test.mapper.BankMapper">
+
+    <sql id="from">
+        from erp_bank
+        <where>
+            <if test="param.id!=null">
+					 and id = #{param.id} 
+				</if>
+				<if test="param.organizationId!=null">
+					 and organization_id = #{param.organizationId} 
+				</if>
+				<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(param.bankName)">
+					 and bank_name like concat('%',#{param.bankName},'%') 
+				</if>
+				<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(param.bankCode)">
+					 and bank_code like concat('%',#{param.bankCode},'%') 
+				</if>
+				<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(param.bankType)">
+					 and bank_type like concat('%',#{param.bankType},'%') 
+				</if>
+				<if test="param.isDeleted!=null">
+					 and is_deleted = #{param.isDeleted} 
+				</if>
+				<if test="param.status!=null">
+					 and status = #{param.status} 
+				</if>
+				
+        </where>
+    </sql>
+	<select id="pageList" resultType="com.example.demo.module.test.dto.BankDTO">
+		select *
+		<include refid="from"/>
+        <if test="param.pageNo!=null and param.pageSize !=null">
+            limit ${(param.pageNo-1)*param.pageSize},#{param.pageSize}
+        </if>
+	</select>
+    <select id="pageCount" resultType="Integer">
+        select count(*)
+        <include refid="from"/>
+    </select>
+
+</mapper>

@@ -1,8 +1,8 @@
-package com.tyche.icms.module.${moduleName}.service;
+package com.example.demo.module.${moduleName}.service;
 
-import com.tyche.icms.common.BaseService;
-import com.tyche.icms.entity.${entityName};
-import com.tyche.icms.module.${moduleName}.param.${entityName}PageParam;
+import com.example.demo.common.BaseService;
+import com.example.demo.entity.${entityName};
+import com.example.demo.module.${moduleName}.param.${entityName}PageParam;
 
 import java.io.Serializable;
 

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.module.localmybatis.mapper.ErpSalePriceMapper">
+
+	<sql id="from">
+		from erp_Erp_sale_price
+		<where>
+			<if test="param.id!=null">
+				and id = #{param.id}
+			</if>
+			<if test="param.organizationId!=null">
+				and organization_id = #{param.organizationId}
+			</if>
+			<if test="param.saleOrganizationId!=null">
+				and sale_organization_id = #{param.saleOrganizationId}
+			</if>
+			<if test="param.customerCommodityId!=null">
+				and customer_commodity_id = #{param.customerCommodityId}
+			</if>
+			<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(param.unitCode)">
+				and unit_code like concat('%',#{param.unitCode},'%')
+			</if>
+			<if test="param.price!=null">
+				and price = #{param.price}
+			</if>
+			<if test="param.currencyId!=null">
+				and currency_id = #{param.currencyId}
+			</if>
+			<if test="param.status!=null">
+				and status = #{param.status}
+			</if>
+			<if test="param.approveTime!=null">
+				and approve_time = #{param.approveTime}
+			</if>
+			<if test="param.approveUser!=null">
+				and approve_user = #{param.approveUser}
+			</if>
+			<if test="param.isDeleted!=null">
+				and is_deleted = #{param.isDeleted}
+			</if>
+			<if test="param.initCommodityHandleId!=null">
+				and init_commodity_handle_id = #{param.initCommodityHandleId}
+			</if>
+			<if test="param.taxRate!=null">
+				and tax_rate = #{param.taxRate}
+			</if>
+			<if test="param.n5CustomerId!=null">
+				and n5_customer_id = #{param.n5CustomerId}
+			</if>
+			<if test="param.n5CommodityId!=null">
+				and n5_commodity_id = #{param.n5CommodityId}
+			</if>
+			<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(param.n5CurrencyName)">
+				and n5_currency_name like concat('%',#{param.n5CurrencyName},'%')
+			</if>
+			<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(param.n5UnitCodeName)">
+				and n5_unit_code_name like concat('%',#{param.n5UnitCodeName},'%')
+			</if>
+			<if test="param.stopTime!=null">
+				and stop_time = #{param.stopTime}
+			</if>
+			<if test="param.stopUser!=null">
+				and stop_user = #{param.stopUser}
+			</if>
+			<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(param.stopRemark)">
+				and stop_remark like concat('%',#{param.stopRemark},'%')
+			</if>
+			<if test="param.enableStartTime!=null">
+				and enable_start_time = #{param.enableStartTime}
+			</if>
+			<if test="param.enableEndTime!=null">
+				and enable_end_time = #{param.enableEndTime}
+			</if>
+			<if test="param.enableUser!=null">
+				and enable_user = #{param.enableUser}
+			</if>
+			<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(param.enableRemark)">
+				and enable_remark like concat('%',#{param.enableRemark},'%')
+			</if>
+			<if test="param.orderType!=null">
+				and order_type = #{param.orderType}
+			</if>
+			<if test="param.hospitalId!=null">
+				and hospital_id = #{param.hospitalId}
+			</if>
+			<if test="param.sourcePriceId!=null">
+				and source_price_id = #{param.sourcePriceId}
+			</if>
+			<if test="param.autoRefresh!=null">
+				and auto_refresh = #{param.autoRefresh}
+			</if>
+			<if test="param.n5AuditStatus!=null">
+				and n5_audit_status = #{param.n5AuditStatus}
+			</if>
+			<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(param.salePriceCode)">
+				and sale_price_code like concat('%',#{param.salePriceCode},'%')
+			</if>
+
+		</where>
+	</sql>
+
+	<select id="count" resultType="Integer">
+		select
+			count(*)
+		FROM
+			erp_sale_price sp
+		LEFT JOIN erp_task_instance ti ON sp.id = ti.relation_id AND ti.task_type = 13
+		LEFT JOIN erp_customer_commodity cc ON sp.customer_commodity_id = cc.id
+		LEFT JOIN erp_sale_organization so ON cc.sale_organization_id = so.id
+		LEFT JOIN erp_enterprise ee ON ee.node_id = so.node_id
+		LEFT JOIN erp_commodity_enterprise ce ON cc.commodity_code = ce.commodity_code AND ce.STATUS = 3 AND ce.enterprise_id = ee.id
+		LEFT JOIN erp_commodity co ON ce.commodity_code = co.commodity_code AND co.STATUS = 3
+		LEFT JOIN sys_system_field_value bsv ON bsv.id = co.brand_id
+		WHERE
+		1 = 1
+		and sp.sale_organization_id IN (9,11,29)
+		AND sp.organization_id = 2
+		AND sp.is_deleted = 1
+		<if test="param.commodityName!=null">
+			AND ce.commodity_name LIKE concat( '%', #{param.commodityName}, '%' )
+		</if>
+		<if test="param.commodityNumber!=null">
+			AND ce.commodity_number LIKE concat( '%', #{param.commodityNumber}, '%' )
+		</if>
+		<if test="param.commodityCode!=null">
+			AND co.commodity_code LIKE concat( '%', #{param.commodityCode}, '%' )
+		</if>
+		<if test="param.fieldValue!=null">
+			AND bsv.field_value LIKE concat( '%', #{param.fieldValue}, '%' )
+		</if>
+		<if test="param.registerNumber!=null">
+			AND co.register_number LIKE concat( '%', #{param.registerNumber}, '%' )
+		</if>
+		<if test="param.commoditySpec!=null">
+			AND co.commodity_spec LIKE concat( '%', #{param.commoditySpec}, '%' )
+		</if>
+		<if test="param.status!=null">
+			AND ti.STATUS IN #{param.status}
+		</if>
+	</select>
+
+	<select id="countWithIf" resultType="Integer">
+	select
+	count(*)
+	FROM
+	erp_sale_price sp
+	<if test = "param.status != null ">
+		LEFT JOIN erp_task_instance ti ON sp.id = ti.relation_id AND ti.task_type = 13
+	</if>
+	<!-- erp_sale_price和erp_customer_commodity是1对N关系,关联后影响count值，这里就不能通过if判断动态省略 -->
+	LEFT JOIN erp_customer_commodity cc ON sp.customer_commodity_id = cc.id
+	<if test = "param.commodityName !=null or param.commodityNumber != null or param.customerEnableCode != null or param.commodityCode != null or param.registerNumber != null or param.commoditySpec != null or param.fieldValue != null">
+		LEFT JOIN erp_sale_organization so ON cc.sale_organization_id = so.id
+	</if>
+	<if test = "param.commodityName !=null or param.commodityNumber != null or param.commodityCode != null or param.registerNumber != null or param.commoditySpec != null or param.fieldValue != null">
+		LEFT JOIN erp_enterprise ee ON ee.node_id = so.node_id
+	</if>
+	<if test = "param.commodityName !=null or param.commodityNumber != null or param.commodityCode != null or param.registerNumber != null or param.commoditySpec != null or param.fieldValue != null">
+		LEFT JOIN erp_commodity_enterprise ce ON cc.commodity_code = ce.commodity_code AND ce.STATUS = 3 AND ce.enterprise_id = ee.id
+	</if>
+	<if test = "param.commodityCode != null or param.registerNumber != null or param.commoditySpec != null or param.fieldValue != null">
+		LEFT JOIN erp_commodity co ON ce.commodity_code = co.commodity_code AND co.STATUS = 3
+	</if>
+	<if test = "param.fieldValue != null">
+		LEFT JOIN sys_system_field_value bsv ON bsv.id = co.brand_id
+	</if>
+	WHERE
+	1 = 1
+	and sp.sale_organization_id IN (9,11,29)
+	AND sp.organization_id = 2
+	AND sp.is_deleted = 1
+	<if test="param.commodityName!=null">
+		AND ce.commodity_name LIKE concat( '%', #{param.commodityName}, '%' )
+	</if>
+	<if test="param.commodityNumber!=null">
+		AND ce.commodity_number LIKE concat( '%', #{param.commodityNumber}, '%' )
+	</if>
+	<if test="param.commodityCode!=null">
+		AND co.commodity_code LIKE concat( '%', #{param.commodityCode}, '%' )
+	</if>
+	<if test="param.fieldValue!=null">
+		AND bsv.field_value LIKE concat( '%', #{param.fieldValue}, '%' )
+	</if>
+	<if test="param.registerNumber!=null">
+		AND co.register_number LIKE concat( '%', #{param.registerNumber}, '%' )
+	</if>
+	<if test="param.commoditySpec!=null">
+		AND co.commodity_spec LIKE concat( '%', #{param.commoditySpec}, '%' )
+	</if>
+	<if test="param.status!=null">
+		AND ti.STATUS IN #{param.status}
+	</if>
+	</select>
+
+</mapper>

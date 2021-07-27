@@ -1,6 +1,6 @@
-package com.tyche.icms.module.${moduleName}.dto;
+package com.example.demo.module.${moduleName}.dto;
 
-import com.tyche.icms.entity.${entityName};
+import com.example.demo.entity.${entityName};
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

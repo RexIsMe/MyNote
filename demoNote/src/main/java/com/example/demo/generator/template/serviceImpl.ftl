@@ -1,11 +1,11 @@
-package com.tyche.icms.module.${moduleName}.service.impl;
+package com.example.demo.module.${moduleName}.service.impl;
 
-import com.tyche.icms.module.${moduleName}.mapper.${entityName}Mapper;
-import com.tyche.icms.module.${moduleName}.service.${entityName}Service;
-import com.tyche.icms.common.BaseServiceImpl;
-import com.tyche.icms.entity.${entityName};
-import com.tyche.icms.module.${moduleName}.param.${entityName}PageParam;
-import com.tyche.icms.utils.PageUtil;
+import com.example.demo.module.${moduleName}.mapper.${entityName}Mapper;
+import com.example.demo.module.${moduleName}.service.${entityName}Service;
+import com.example.demo.common.BaseServiceImpl;
+import com.example.demo.entity.${entityName};
+import com.example.demo.module.${moduleName}.param.${entityName}PageParam;
+import com.example.demo.utils.PageUtil;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 

@@ -23,17 +23,17 @@ import java.util.*;
  */
 public class Generator {
 	/** 模块名称 */
-	public static final String MODULE_NAME = "system";
+	public static final String MODULE_NAME = "test";
 	/** xml mapper 文件生成路径 */
-	public static final String XML_MAPPER_URL = "src/main/resources/mapper/manage/";
+	public static final String XML_MAPPER_URL = "src/main/resources/mapper/";
 	/** 模块文件生成路径 */
-	public static final String MODULE_PATH_URL = "src/main/java/com/tyche/icms/module/";
+	public static final String MODULE_PATH_URL = "src/main/java/com/example/demo/module/";
 	/** entity文件生成路径 */
-	public static final String ENTITY_PATH_URL = "src/main/java/com/tyche/icms/entity";
+	public static final String ENTITY_PATH_URL = "src/main/java/com/example/demo/entity";
 
 	public static void main(String[] args) throws Exception {
-		String generatorName = "zhangcan";
-		String[] table = new String[]{"ic_white_member"};
+		String generatorName = "lizhiqiang";
+		String[] table = new String[]{"erp_bank"};
 		Generator generator = new Generator();
         generator.entity(table, generatorName);
         generator.dto(table, generatorName);
@@ -57,10 +57,14 @@ public class Generator {
 	 * @throws Exception
 	 */
 	private Connection getConnection() throws Exception {
-		String url = PropertiesUtil.getDevProperty("spring.datasource.druid.url");
-		String username = PropertiesUtil.getDevProperty("spring.datasource.druid.username");
-		String password = PropertiesUtil.getDevProperty("spring.datasource.druid.password");
-		Class.forName(PropertiesUtil.getCommonProperty("spring.datasource.druid.driver-class-name"));
+//		String url = PropertiesUtil.getDevProperty("spring.datasource.druid.url");
+//		String username = PropertiesUtil.getDevProperty("spring.datasource.druid.username");
+//		String password = PropertiesUtil.getDevProperty("spring.datasource.druid.password");
+//		Class.forName(PropertiesUtil.getCommonProperty("spring.datasource.druid.driver-class-name"));
+		String url = PropertiesUtil.getDevProperty("spring.datasource.url");
+		String username = PropertiesUtil.getDevProperty("spring.datasource.username");
+		String password = PropertiesUtil.getDevProperty("spring.datasource.password");
+		Class.forName(PropertiesUtil.getCommonProperty("spring.datasource.driver-class-name"));
 		return DriverManager.getConnection(url, username, password);
 	}
 
@@ -73,7 +77,7 @@ public class Generator {
 	private String getTemplatePath() {
 		String resourcePath = getResourcePath();
 		return (resourcePath.substring(0, resourcePath.indexOf("target")))
-				+ "src/main/java/com/tyche/icms/generator/template";
+				+ "src/main/java/com/example/demo/generator/template";
 	}
 
 	private String getPath() {

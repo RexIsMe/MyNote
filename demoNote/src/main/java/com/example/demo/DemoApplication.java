@@ -7,7 +7,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-@MapperScan("com.example.demo.module.localmybatis.mapper")
+@MapperScan("com.example.demo.module.localmybatis.mapper, com.example.demo.module.test.mapper")
 public class DemoApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

@@ -1,9 +1,9 @@
-package com.tyche.icms.module.${moduleName}.param;
+package com.example.demo.module.${moduleName}.param;
 
-import com.tyche.icms.common.PageListParam;
+import com.example.demo.common.PageListParam;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import com.tyche.icms.annotation.Comment;
+import com.example.demo.annotation.Comment;
 ${imports}
 /**
  * @author ${generatorName}
