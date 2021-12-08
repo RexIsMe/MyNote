@@ -1,7 +1,7 @@
 package designpattern.creation.factory;
 
 /**
- * 【工厂模式】
+ * 颜色接口
  *
  * @author Cytang
  * @title: Color

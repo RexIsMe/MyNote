@@ -10,6 +10,7 @@ public class UseCalculate {
 
     private Calculate calculate;
 
+    /* 单纯的策略模式使用 */
     public UseCalculate(Calculate calculate) {
         this.calculate = calculate;
     }
@@ -22,16 +23,25 @@ public class UseCalculate {
         return calculate.cal(a, b);
     }
 
+    /* 配合工厂模式的写法 */
+    public UseCalculate(String calculateName) {
+        this.calculate = new CalculateFactory().getCalc(calculateName);
+    }
+
 
     public static void main(String[] args) {
 
         UseCalculate useCalculate1 = new UseCalculate(new AddCalculate());
         UseCalculate useCalculate2 = new UseCalculate(new Subtraction());
 
-
         System.out.println(useCalculate1.cal(1, 2));
         System.out.println(useCalculate2.cal(1, 2));
 
+
+        UseCalculate add = new UseCalculate("add");
+        UseCalculate sub = new UseCalculate("sub");
+        System.out.println(add.cal(1, 2));
+        System.out.println(sub.cal(1, 2));
 
     }
 
