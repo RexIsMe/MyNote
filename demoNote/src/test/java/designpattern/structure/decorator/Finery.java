@@ -1,6 +1,9 @@
 package designpattern.structure.decorator;
 
 /**
+ * 装饰类
+ * 这里是服饰抽象类
+ *
  * @Author li zhiqang
  * @create 2021/12/2
  */
