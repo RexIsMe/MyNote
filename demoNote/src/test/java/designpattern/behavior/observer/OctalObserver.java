@@ -6,7 +6,7 @@ package designpattern.behavior.observer;
  */
 public class OctalObserver extends Observer{
 
-    public OctalObserver(Subject subject){
+    public OctalObserver(Subject1 subject){
         this.subject = subject;
         this.subject.attach(this);
     }

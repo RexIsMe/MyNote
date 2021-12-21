@@ -11,7 +11,7 @@ package designpattern.behavior.observer;
  */
 public class ObserverPatternDemo {
     public static void main(String[] args) {
-        Subject subject = new Subject();
+        Subject1 subject = new Subject1();
 
         new HexaObserver(subject);
         new OctalObserver(subject);
