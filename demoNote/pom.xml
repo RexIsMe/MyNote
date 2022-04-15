@@ -261,6 +261,29 @@
 <!--            <classifier>linux-x86_64</classifier>-->
 <!--        </dependency>-->
 
+
+        <!-- stanford nlp依赖 -->
+        <dependency>
+            <groupId>edu.stanford.nlp</groupId>
+            <artifactId>stanford-corenlp</artifactId>
+            <version>3.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>edu.stanford.nlp</groupId>
+            <artifactId>stanford-corenlp</artifactId>
+            <version>3.9.2</version>
+            <classifier>models</classifier>
+        </dependency>
+        <!--添加中文支持-->
+        <dependency>
+            <groupId>edu.stanford.nlp</groupId>
+            <artifactId>stanford-corenlp</artifactId>
+            <version>3.9.2</version>
+            <classifier>models-chinese</classifier>
+        </dependency>
+
+
+
     </dependencies>
 
     <build>
