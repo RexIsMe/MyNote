@@ -13,13 +13,13 @@ public class ThreadExceptionTest {
         try {
             ThreadThread threadThread = new ThreadThread();
             //通过Thread.UncaughtExceptionHandler还是可以获取继承了Thread类的异常信息
-//        threadThread.setUncaughtExceptionHandler(
-//                new Thread.UncaughtExceptionHandler() {
-//            @Override
-//            public void uncaughtException(Thread t, Throwable e) {
-//                System.out.println(t.getName() + " " + e.getMessage());
-//            }
-//        });
+//            threadThread.setUncaughtExceptionHandler(
+//                    new Thread.UncaughtExceptionHandler() {
+//                @Override
+//                public void uncaughtException(Thread t, Throwable e) {
+//                    System.out.println(t.getName() + " " + e.getMessage());
+//                }
+//            });
             threadThread.start();
         } catch (Exception e){
             System.out.println("异常信息：" + e.getMessage());

@@ -20,4 +20,6 @@ public interface BankMapper extends BaseMapper<Bank> {
 
 	Integer pageCount(@Param("param") BankPageParam param);
 
+	Integer insertOne(@Param("param") BankPageParam param);
+
 }

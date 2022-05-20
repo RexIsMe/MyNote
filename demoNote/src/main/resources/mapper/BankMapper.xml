@@ -41,4 +41,26 @@
         <include refid="from"/>
     </select>
 
+	<insert id="insertOne" parameterType="com.example.demo.module.test.param.BankPageParam" >
+		insert into erp_bank(
+			id,
+			organization_id,
+			bank_name,
+			bank_code,
+			bank_type,
+			is_deleted,
+			status
+		)
+		values (
+			#{param.id},
+			#{param.organizationId},
+			#{param.bankName},
+			#{param.bankCode},
+			#{param.bankType},
+			#{param.isDeleted},
+			#{param.status}
+		)
+
+	</insert>
+
 </mapper>
