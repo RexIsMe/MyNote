@@ -17,6 +17,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.Serializable;
 
 /**
+ * 理解springboot的aop实现
+ * 事务原理及失效场景
+ *
  * @author lizhiqiang
  * @date 2021-07-27 15:16:46
  */
